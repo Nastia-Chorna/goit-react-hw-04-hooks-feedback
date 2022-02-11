@@ -7,6 +7,8 @@ Stats
 } from "./Statistics.styled";
 
 export default function Statistics({good, neutral, bad, total, positivePercentage}) {
+
+return (
 <div>
 
                 <div className="Wrap">
@@ -20,5 +22,6 @@ export default function Statistics({good, neutral, bad, total, positivePercentag
         </div>
         </div>
 
-};
+);
+}
 

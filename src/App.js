@@ -10,8 +10,8 @@ export const App = () => {
   const [neutral, setNeutral]= useState(0)
   const [bad, setBad]= useState(0)
 
-  const hendlerChange = option => {
-    switch (option) {
+  const hendlerChange = key => {
+    switch (key) {
       case "good":
         return setGood((prevGood) => prevGood + 1);
       case "neutral":
@@ -28,24 +28,25 @@ export const App = () => {
     };
 
   const countPositivePercentage = () => {
-    return countTotalFeedback() ? Math.round((good * 100) / countTotalFeedback()) : 0;
+    let totalState = countTotalFeedback()
+    return Math.round((good * 100) / totalState)
   };
 
-  const totalState = () => ["good", "neutral", "bad"]
+  const createTotalState = () => ["good", "neutral", "bad"]
 
     
     return (
 <>
     <Section title="Please leave feedback">
       <FeedbackOptions   
-       options={totalState()}
+       options={createTotalState()}
        onLeaveFeedback={hendlerChange}
        />
        </Section> 
             
        <Section
          title="Statistics">
-         {countTotalFeedback > 0 ? (
+         {countTotalFeedback() ? (
          <Statistics
             good={good}
             neutral={neutral}

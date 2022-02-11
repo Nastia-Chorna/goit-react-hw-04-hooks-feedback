@@ -3,25 +3,26 @@ import PropTypes from "prop-types";
 import { 
     Wrap,
     Button,
-    Item
+
     
 } from "./feedbackOptions.styled";
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     return (
         <Wrap>
-         {options.map(option => {
-        return (
-          <Item
-            key={option}
+         {options.map(key => (
+      
+          <Button
+            key={key}
+            type="button"
             onClick={() => {
-              onLeaveFeedback(option);
-            }}
+              onLeaveFeedback(key)}}
+            className="button"
           >
-            <Button>{option}</Button>
-          </Item>
-        );
-      })}
+            {key}
+          </Button>
+        )
+      )}
 
        </Wrap>
    ) 
